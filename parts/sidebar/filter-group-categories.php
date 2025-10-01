@@ -7,7 +7,7 @@ $option_value_bpcgc = openlab_get_current_filter( 'cat' );
 
 <?php if ( $group_terms ) : ?>
 	<div class="custom-select">
-		<label for="bp-group-categories-select" class="sr-only"><?php echo esc_html_e( 'Select: Category', 'commons-in-a-box' ); ?></label>
+		<label for="bp-group-categories-select" class="sr-only"><?php esc_html_e( 'Select: Category', 'commons-in-a-box' ); ?></label>
 		<select name="cat" class="last-select" id="bp-group-categories-select">
 			<option value="" <?php selected( '', $option_value_bpcgc ); ?>><?php esc_html_e( 'Category', 'commons-in-a-box' ); ?></option>
 			<option value='cat_all' <?php selected( 'cat_all', $option_value_bpcgc ); ?>><?php esc_html_e( 'All', 'commons-in-a-box' ); ?></option>

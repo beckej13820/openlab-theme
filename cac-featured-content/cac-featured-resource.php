@@ -39,7 +39,7 @@ echo "</{$cfcw_view->title_element}>";
 
 				<?php // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 				<p><?php echo bp_create_excerpt( $cfcw_view->description, $cfcw_view->crop_length ); ?></p>
-				<p class="see-more"><a class="semibold" href="<?php echo esc_url( $cfcw_view->resource_link ); ?>"><?php echo esc_html_e( 'See More', 'cac-featured-content' ); ?><span class="sr-only"> <?php echo esc_html_e( 'about this In the Spotlight', 'cac-featured-content' ); ?></span></a></p>
+				<p class="see-more"><a class="semibold" href="<?php echo esc_url( $cfcw_view->resource_link ); ?>"><?php esc_html_e( 'See More', 'cac-featured-content' ); ?><span class="sr-only"> <?php echo esc_html_e( 'about this In the Spotlight', 'cac-featured-content' ); ?></span></a></p>
 			</div>
 
 		<?php else : ?>
