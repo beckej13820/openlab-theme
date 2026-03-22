@@ -112,7 +112,7 @@ module.exports = function (grunt) {
 			},
 			copy: {
 			splide: {
-				src: 'node_modules/@splidejs/splide/dist/css/splide-core.min.css',
+				src: 'node_modules/@splidejs/splide/dist/css/splide.min.css',
 				dest: 'css/splide.css',
 			},
 		},
