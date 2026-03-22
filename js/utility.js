@@ -954,7 +954,12 @@
 
 			//splide slider on home
 			if ( document.querySelector( '.splide' ) ) {
-				new Splide( '.splide' ).mount();
+				var splideOptions = {};
+				if ( document.querySelectorAll( '.splide__slide' ).length <= 1 ) {
+					splideOptions.arrows     = false;
+					splideOptions.pagination = false;
+				}
+				new Splide( '.splide', splideOptions ).mount();
 			}
 
 			if ($( '#home-new-member-wrap' ).length) {
