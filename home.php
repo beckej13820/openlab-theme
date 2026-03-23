@@ -10,13 +10,13 @@ get_header();
 
 <h1 class="site-title sr-only"><?php bloginfo( 'name' ); ?></h1>
 
-<div id="openlab-main-content" class="clearfix row-home-top" role="main">
-	<div class="no-gutter no-gutter-right login">
+<div id="openlab-main-content" class="clearfix row-home-top<?php echo get_theme_mod( 'slider_arrows', 0 ) ? ' has-slider-arrows' : ''; ?>" role="main">
+	<div class="login">
 		<div id="cuny_openlab_jump_start">
 			<?php get_template_part( 'parts/home/login' ); ?>
 		</div>
 	</div>
-	<div class="fill-gutter fill-gutter-left slider">
+	<div class="slider">
 		<?php // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 		<?php echo openlab_get_home_slider(); ?>
 	</div>

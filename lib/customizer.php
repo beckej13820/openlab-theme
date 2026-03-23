@@ -222,6 +222,117 @@ function openlab_customizer_setup( $wp_customize ) {
 		$wp_customize->add_section( $c );
 	}
 
+	// Front Page Slider
+	$wp_customize->add_section(
+		'openlab_section_slider',
+		array(
+			'title' => __( 'Front Page Slider', 'commons-in-a-box' ),
+			'panel' => 'openlab_home_page',
+		)
+	);
+
+	$wp_customize->add_setting(
+		'slider_type',
+		array(
+			'default'           => 'slide',
+			'sanitize_callback' => 'openlab_sanitize_customizer_slider_type',
+		)
+	);
+
+	$wp_customize->add_control(
+		'slider_type',
+		array(
+			'label'   => __( 'Transition type', 'commons-in-a-box' ),
+			'section' => 'openlab_section_slider',
+			'type'    => 'radio',
+			'choices' => array(
+				'slide' => __( 'Slide', 'commons-in-a-box' ),
+				'loop'  => __( 'Loop', 'commons-in-a-box' ),
+				'fade'  => __( 'Fade', 'commons-in-a-box' ),
+			),
+		)
+	);
+
+	$wp_customize->add_setting(
+		'slider_arrows',
+		array(
+			'default'           => 0,
+			'sanitize_callback' => 'openlab_sanitize_customizer_setting_intval',
+		)
+	);
+
+	$wp_customize->add_control(
+		'slider_arrows',
+		array(
+			'label'   => __( 'Show forward/back arrows', 'commons-in-a-box' ),
+			'section' => 'openlab_section_slider',
+			'type'    => 'checkbox',
+		)
+	);
+
+
+	$wp_customize->add_setting(
+		'slider_autoplay',
+		array(
+			'default'           => 0,
+			'sanitize_callback' => 'openlab_sanitize_customizer_setting_intval',
+		)
+	);
+
+	$wp_customize->add_setting(
+		'slider_autoplay_interval',
+		array(
+			'default'           => 5,
+			'sanitize_callback' => 'absint',
+		)
+	);
+
+	$wp_customize->add_setting(
+		'slider_pause_on_hover',
+		array(
+			'default'           => 1,
+			'sanitize_callback' => 'openlab_sanitize_customizer_setting_intval',
+		)
+	);
+
+	$wp_customize->add_control(
+		'slider_autoplay',
+		array(
+			'label'   => __( 'Enable autoplay', 'commons-in-a-box' ),
+			'section' => 'openlab_section_slider',
+			'type'    => 'checkbox',
+		)
+	);
+
+	$wp_customize->add_control(
+		'slider_autoplay_interval',
+		array(
+			'label'           => __( 'Autoplay interval (seconds)', 'commons-in-a-box' ),
+			'section'         => 'openlab_section_slider',
+			'type'            => 'number',
+			'input_attrs'     => array(
+				'min'  => 1,
+				'max'  => 30,
+				'step' => 1,
+			),
+			'active_callback' => function() use ( $wp_customize ) {
+				return (bool) $wp_customize->get_setting( 'slider_autoplay' )->value();
+			},
+		)
+	);
+
+	$wp_customize->add_control(
+		'slider_pause_on_hover',
+		array(
+			'label'           => __( 'Pause on hover', 'commons-in-a-box' ),
+			'section'         => 'openlab_section_slider',
+			'type'            => 'checkbox',
+			'active_callback' => function() use ( $wp_customize ) {
+				return (bool) $wp_customize->get_setting( 'slider_autoplay' )->value();
+			},
+		)
+	);
+
 	$wp_customize->add_panel(
 		'openlab_panel_footer',
 		array(
@@ -417,3 +528,9 @@ function openlab_sanitize_customizer_setting_color_scheme( $setting ) {
 function openlab_sanitize_customizer_setting_intval( $setting ) {
 	return intval( $setting );
 }
+
+function openlab_sanitize_customizer_slider_type( $setting ) {
+	$allowed = array( 'slide', 'loop', 'fade' );
+	return in_array( $setting, $allowed, true ) ? $setting : 'slide';
+}
+

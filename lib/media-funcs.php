@@ -36,6 +36,14 @@ function openlab_get_home_slider() {
 
 	$markup  = '<section class="splide" aria-label="' . esc_attr__( 'Slideshow', 'commons-in-a-box' ) . '">';
 	$markup .= '<div class="splide__track"><ul class="splide__list">' . $slides . '</ul></div>';
+
+	if ( get_theme_mod( 'slider_autoplay', 0 ) ) {
+		$markup .= '<button class="splide__toggle" type="button">';
+		$markup .= '<span class="splide__toggle__play"><span class="fa fa-play" aria-hidden="true"></span><span class="sr-only">' . esc_html__( 'Play slideshow', 'commons-in-a-box' ) . '</span></span>';
+		$markup .= '<span class="splide__toggle__pause"><span class="fa fa-pause" aria-hidden="true"></span><span class="sr-only">' . esc_html__( 'Pause slideshow', 'commons-in-a-box' ) . '</span></span>';
+		$markup .= '</button>';
+	}
+
 	$markup .= '</section>';
 
 	return $markup;

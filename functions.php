@@ -1,6 +1,6 @@
 <?php
 
-define( 'OPENLAB_VERSION', '1.7.0-1774197350335' );
+define( 'OPENLAB_VERSION', '1.7.0-1774224285056' );
 
 if ( ! defined( 'CSS_DEBUG' ) ) {
 	define( 'CSS_DEBUG', false );
@@ -211,6 +211,13 @@ function openlab_load_scripts() {
 					'deleteFolder'     => esc_html__( 'Are you sure you wish to permanently delete this folder? The files associated with this folder will not be deleted.', 'commons-in-a-box' ),
 					'seeMore'          => esc_html__( 'See More', 'commons-in-a-box' ),
 				),
+				'slider'  => array(
+					'type'         => get_theme_mod( 'slider_type', 'slide' ),
+					'autoplay'     => (bool) get_theme_mod( 'slider_autoplay', 0 ),
+					'interval'     => (int) get_theme_mod( 'slider_autoplay_interval', 5 ) * 1000,
+					'pauseOnHover' => (bool) get_theme_mod( 'slider_pause_on_hover', 1 ),
+					'arrows'       => (bool) get_theme_mod( 'slider_arrows', 0 ),
+				),
 			)
 		);
 
@@ -305,7 +312,7 @@ add_action( 'wp_enqueue_scripts', 'openlab_load_scripts_high_priority', 999 );
  * Custom image sizes
  */
 // front page slider
-add_image_size( 'front-page-slider', 735, 295, true );
+add_image_size( 'front-page-slider', 1400, 500, true );
 
 /**
  * Register sidebar widget areas.

@@ -954,10 +954,22 @@
 
 			//splide slider on home
 			if ( document.querySelector( '.splide' ) ) {
-				var splideOptions = {};
+				var sliderSettings   = ( typeof localVars !== 'undefined' && localVars.slider ) ? localVars.slider : {};
+				var splideOptions = {
+					arrows:       sliderSettings.arrows !== undefined ? sliderSettings.arrows : false,
+					type:         sliderSettings.type         || 'slide',
+					autoplay:     sliderSettings.autoplay     || false,
+					interval:     sliderSettings.interval     || 5000,
+					pauseOnHover: sliderSettings.pauseOnHover !== undefined ? sliderSettings.pauseOnHover : true,
+					reducedMotion: {
+						speed:       0,
+						rewindSpeed: 0,
+						autoplay:    'pause'
+					}
+				};
 				if ( document.querySelectorAll( '.splide__slide' ).length <= 1 ) {
-					splideOptions.arrows     = false;
 					splideOptions.pagination = false;
+					splideOptions.autoplay   = false;
 				}
 				new Splide( '.splide', splideOptions ).mount();
 			}
