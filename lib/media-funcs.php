@@ -27,7 +27,7 @@ function openlab_get_home_slider() {
 
 		$img_obj = wp_get_attachment_image_src( get_post_thumbnail_id(), 'front-page-slider' );
 		$slides .= '<li class="splide__slide">';
-		$slides .= '<img src="' . esc_url( $img_obj[0] ) . '" alt="' . esc_attr( get_the_title() ) . '">';
+		$slides .= '<img src="' . esc_url( $img_obj[0] ) . '" alt="">';
 		$slides .= '<div class="splide__slide__content"><h2 class="regular">' . get_the_title() . '</h2>' . get_the_content_with_formatting() . '</div>';
 		$slides .= '</li>';
 	endwhile;
